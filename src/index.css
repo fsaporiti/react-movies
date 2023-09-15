@@ -7,10 +7,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   background-color: rgb(14, 13, 13);
-  color: #fff;
+  color: white;
+  
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+a {
+  color: white;
+  text-decoration: none;
 }
