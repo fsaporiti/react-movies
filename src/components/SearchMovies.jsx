@@ -1,11 +1,36 @@
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import style from "../css/SearchMovies.module.css"
 import { FaSearch } from 'react-icons/fa';
 
+function useQuery () {
+    return new URLSearchParams(useLocation().search)
+}
+
 export function SearchMovies() {
+    const query = useQuery()
+    const search = query.get("search")
+    const [searchText, setSearchText] = useState("")
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        setSearchText(search || "")
+    }, [search]);
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        navigate(`/?search=${searchText}`)
+    }
+
     return (
-        <form className={style.searchContainer}>
+        <form className={style.searchContainer} onSubmit={handleSubmit}>
             <div className={style.searchBox}>
-                <input type="text" className={style.searchInput}/>
+                <input 
+                    type="text" 
+                    className={style.searchInput} 
+                    value={searchText}
+                    onChange={(event) => setSearchText(event.target.value)}              
+                />
                 <button type="submit" className={style.searchButton}>
                     <FaSearch size={20}/>
                 </button>

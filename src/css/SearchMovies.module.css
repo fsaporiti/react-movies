@@ -16,14 +16,18 @@
     height: 100%;
     border: 0;
     background: none;
-
 }
 
 .searchInput {
     height: 30px;
     border-radius: 10px;
     padding: 3px 35px 3px 10px;
-
+    font-size: 1rem;
+    border: 1px solid white;
 }
     
+.searchInput:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgb(232, 232, 245);
+}
 

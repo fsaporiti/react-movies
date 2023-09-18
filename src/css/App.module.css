@@ -1,7 +1,7 @@
 .title {
     text-align: center;
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073,
-        0 0 60px #e60073, 0 0 70px #e60073;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #2c1fa0, 0 0 40px #5443ec, 0 0 50px #3423c7,
+        0 0 60px #3423c7, 0 0 70px #3423c7;
     font-size: 3.2rem;
     text-decoration: none;
 }
