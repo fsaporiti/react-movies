@@ -5,6 +5,7 @@ import { Loading } from "./Loading";
 import { useLocation } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component"
 import { get } from "../httpClient";
+import { Empty404 } from "./Empty404";
 
 function useQuery () {
     return new URLSearchParams(useLocation().search)
@@ -30,7 +31,13 @@ export function MoviesGrid () {
             setLoading(false)
         })
         .catch(error => console.error(error));
-    }, [search, page])             
+    }, [search, page])      
+    
+    if (!loading && movies.length === 0) {
+        return (
+            <Empty404 />
+        )
+    }
 
     return (
     <InfiniteScroll  

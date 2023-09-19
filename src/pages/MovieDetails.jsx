@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import style from "../css/MovieDetails.module.css"
 import { Loading } from "../components/Loading";
 import { get } from "../httpClient";
+import placeholderImg from "../Placeholder_Person.jpg"
 
 
 export function MovieDetails () {
@@ -22,7 +23,9 @@ export function MovieDetails () {
         return <Loading />
     }
 
-    const imgUrl = "https://image.tmdb.org/t/p/w500" + movieId.poster_path
+    const imgUrl = movieId.poster_path 
+    ? "https://image.tmdb.org/t/p/w500" + movieId.poster_path
+    : placeholderImg
     return (
         <div className={style.detailsContainer}>
             <img className={`${style.col} ${style.movieImgDetail}`} src={imgUrl} alt={movieId.title} />
@@ -34,5 +37,3 @@ export function MovieDetails () {
         </div>
     )
 }
-
-

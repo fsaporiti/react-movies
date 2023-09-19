@@ -30,7 +30,11 @@ export function SearchMovies() {
                     placeholder="Title"
                     className={style.searchInput} 
                     value={searchText}
-                    onChange={(event) => setSearchText(event.target.value)}              
+                    onChange={(event) => {
+                        const value = event.target.value;
+                        setSearchText(value);
+                        navigate(`/?search=${value}`)
+                    }}              
                 />
                 <button type="submit" className={style.searchButton}>
                     <FaSearch size={20}/>
