@@ -27,6 +27,7 @@ export function SearchMovies() {
             <div className={style.searchBox}>
                 <input 
                     type="text" 
+                    placeholder="Title"
                     className={style.searchInput} 
                     value={searchText}
                     onChange={(event) => setSearchText(event.target.value)}              

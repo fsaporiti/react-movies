@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import style from "../css/MovieDetails.module.css"
 import { Loading } from "../components/Loading";
+import { get } from "../httpClient";
 
 
 export function MovieDetails () {
@@ -11,17 +12,11 @@ export function MovieDetails () {
 
     useEffect(() => {
         setIsLoading(true)
-
-        fetch("https://api.themoviedb.org/3/movie/" + id, {
-            headers: {
-                Authorization: 
-                    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1YmU2MmJhZDg1MWJhNGFhMDk3NGVjNTUxMDhjOWZkNCIsInN1YiI6IjY1MDQ3MDk4YjUxM2E4MDEzYTBiMzY2ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0f7iscUtDBnWzcd92JE_gW9Gw7X1deFNj59RdVb7VX0",
-            }
-        }).then(result => result.json()).then(data => {
+        get(`/movie/${id}`).then(data => {
             setMovieId(data)
             setIsLoading(false)
         })
-}, [id])
+    }, [id])
 
     if (isLoading) {
         return <Loading />
